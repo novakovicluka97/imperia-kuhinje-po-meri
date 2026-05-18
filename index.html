@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO ============================================================ -->
+  <title>Imperia — Luksuzne kuhinje po meri | Beograd i Novi Sad</title>
+  <meta name="description" content="Imperia izrađuje ekskluzivne kuhinje i nameštaj po meri za Beograd i Novi Sad. Projektovanje, 3D prikaz, ručna izrada i montaža. Zatražite ponudu bez obaveza.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B0B0B">
+  <link rel="canonical" href="https://imperia-kuhinje.rs/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sr_RS">
+  <meta property="og:site_name" content="Imperia">
+  <meta property="og:title" content="Imperia — Luksuzne kuhinje po meri">
+  <meta property="og:description" content="Ekskluzivne kuhinje i nameštaj po meri za Beograd i Novi Sad. Projektovanje, 3D prikaz, ručna izrada i montaža.">
+  <meta property="og:url" content="https://imperia-kuhinje.rs/">
+  <meta property="og:image" content="https://imperia-kuhinje.rs/assets/icons/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Imperia — Luksuzne kuhinje po meri">
+  <meta name="twitter:description" content="Ekskluzivne kuhinje i nameštaj po meri za Beograd i Novi Sad.">
+  <meta name="twitter:image" content="https://imperia-kuhinje.rs/assets/icons/og-image.jpg">
+
+  <!-- Icons & manifest -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- ===== PERFORMANCE ==================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload the hero image (it is the Largest Contentful Paint element) -->
+  <link rel="preload" as="image" type="image/webp" href="assets/images/hero/hero.webp" media="(min-width: 861px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="assets/images/hero/hero-mobile.webp" media="(max-width: 860px)" fetchpriority="high">
+
+  <!-- ===== STYLES =========================================================
+       Modular CSS. Load order matters: dashboard.css must come first — it
+       defines every font, colour and size the other files read.
+       ⭐ To resize / restyle the site, edit ONLY  css/dashboard.css.         -->
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <!-- Enable scroll-reveal before first paint (prevents a content flash). -->
+  <script>document.documentElement.classList.add('js-reveal');</script>
+
+  <!-- ===== STRUCTURED DATA =============================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://imperia-kuhinje.rs/#business",
+    "name": "Imperia — Kuhinje po meri",
+    "description": "Izrada luksuznih kuhinja i nameštaja po meri za Beograd i Novi Sad.",
+    "url": "https://imperia-kuhinje.rs/",
+    "telephone": "+381628350793",
+    "email": "kuhinjepomeribgns@gmail.com",
+    "image": "https://imperia-kuhinje.rs/assets/icons/og-image.jpg",
+    "priceRange": "$$$",
+    "currenciesAccepted": "RSD, EUR",
+    "areaServed": [
+      { "@type": "City", "name": "Beograd" },
+      { "@type": "City", "name": "Novi Sad" }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RS",
+      "addressLocality": "Beograd"
+    },
+    "sameAs": ["https://www.instagram.com/kuhinje_po_meri_bg_ns/"]
+  }
+  </script>
+</head>
+
+<body class="has-hero-cta">
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+  <!-- ===================================================================== -->
+  <!-- HEADER (identical on every page)                                      -->
+  <!-- ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__left">
+      <button class="nav-toggle" type="button" aria-label="Otvori meni" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav-toggle__bars"></span>
+      </button>
+      <a class="nav-link nav-desktop-item" href="galerija.html">Galerija</a>
+    </div>
+    <a class="site-header__brand" href="index.html" aria-label="Imperia — početna strana">
+      <svg class="brandmark" viewBox="0 0 540 96" aria-hidden="true">
+        <text class="brandmark__name" x="270" y="60" text-anchor="middle" font-size="72" letter-spacing="0.34em">IMPERIA</text>
+        <line class="brandmark__rule" x1="92" y1="78" x2="174" y2="78"/>
+        <line class="brandmark__rule" x1="366" y1="78" x2="448" y2="78"/>
+        <text class="brandmark__sub" x="270" y="82" text-anchor="middle" font-size="9.5" letter-spacing="0.42em">KUHINJE PO MERI</text>
+      </svg>
+    </a>
+    <div class="site-header__right">
+      <a class="btn btn--ghost btn--small nav-desktop-item" href="kontakt.html">Kontakt</a>
+    </div>
+  </header>
+
+  <!-- Mobile full-screen menu -->
+  <nav class="nav-mobile" id="mobile-menu" aria-label="Mobilni meni">
+    <a class="nav-mobile__link" href="index.html" aria-current="page">Početna</a>
+    <a class="nav-mobile__link" href="galerija.html">Galerija</a>
+    <a class="nav-mobile__link" href="kontakt.html">Kontakt</a>
+    <p class="nav-mobile__contact">
+      <a href="tel:+381628350793">+381 62 835 0793</a>
+    </p>
+  </nav>
+
+  <main id="main">
+
+    <!-- =================================================================== -->
+    <!-- HERO                                                                -->
+    <!-- =================================================================== -->
+    <section class="hero">
+      <div class="hero__media">
+        <picture>
+          <source media="(max-width: 860px)" type="image/webp" srcset="assets/images/hero/hero-mobile.webp">
+          <source type="image/webp" srcset="assets/images/hero/hero.webp">
+          <img src="assets/images/hero/hero.jpg" alt="Moderna kuhinja po meri koju je izradila Imperia" width="1080" height="1350" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="hero__scrim"></div>
+
+      <div class="hero__content">
+        <!-- Kept for SEO + accessibility; visually hidden so the hero shows
+             only the two buttons over the photograph. -->
+        <h1 class="sr-only">Imperia — luksuzne kuhinje i nameštaj po meri za Beograd i Novi Sad</h1>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="kontakt.html">Zatražite ponudu</a>
+          <a class="btn btn--light" href="galerija.html">Pogledajte galeriju</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Istražite</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- INTRO                                                               -->
+    <!-- =================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="intro__text" data-reveal>
+          <p class="eyebrow">Imperia</p>
+          <h2>Nameštaj koji traje generacijama</h2>
+          <hr class="divider">
+          <p style="margin-top:var(--sp-3)">
+            Svaka kuhinja koju izradimo nastaje kao odgovor na vaš prostor, vaše
+            navike i vaš ukus. Spajamo precizan zanat, plemenite materijale i
+            savremen dizajn u komade nameštaja koji su jednako lepi i trajni.
+          </p>
+          <p>
+            Ne pravimo serijski nameštaj. Pravimo enterijer po meri jednog doma —
+            vašeg.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VALUES / PROCESS                                                    -->
+    <!-- =================================================================== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Naš pristup</p>
+          <h2>Od ideje do gotove kuhinje</h2>
+        </div>
+        <div class="values__grid">
+          <article class="value" data-reveal>
+            <span class="value__index">01</span>
+            <span class="value__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+                <path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M12 12 21 7M12 12v10M12 12 3 7"/>
+              </svg>
+            </span>
+            <h3 class="value__title">Projektovanje i 3D prikaz</h3>
+            <p class="value__text">Pre izrade, vašu kuhinju vidite kroz detaljnu skicu i fotorealističan 3D prikaz.</p>
+          </article>
+          <article class="value" data-reveal>
+            <span class="value__index">02</span>
+            <span class="value__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+                <path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3 6.5 9 12 21M15 3l2.5 6L12 21"/>
+              </svg>
+            </span>
+            <h3 class="value__title">Ručna izrada po meri</h3>
+            <p class="value__text">Svaki element izrađujemo namenski za vaš prostor, od pažljivo odabranih materijala.</p>
+          </article>
+          <article class="value" data-reveal>
+            <span class="value__index">03</span>
+            <span class="value__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+                <path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/>
+              </svg>
+            </span>
+            <h3 class="value__title">Isporuka i montaža</h3>
+            <p class="value__text">Preuzimamo sve — od transporta do precizne montaže u vašem domu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- GALLERY PREVIEW                                                     -->
+    <!-- =================================================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Galerija</p>
+          <h2>Izbor naših radova</h2>
+          <p>Kuhinje, plakari i nameštaj po meri — izrađeni za domove u Beogradu i Novom Sadu.</p>
+        </div>
+
+        <div class="gallery-grid" id="preview-grid" style="margin-top:var(--sp-5)">
+          <!-- PREVIEW:START -->
+      <figure class="gallery__item" data-full="assets/images/gallery/full/01.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/01.webp">
+          <img src="assets/images/gallery/thumb/01.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/02.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/02.webp">
+          <img src="assets/images/gallery/thumb/02.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/03.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/03.webp">
+          <img src="assets/images/gallery/thumb/03.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1024" height="1280" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/04.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/04.webp">
+          <img src="assets/images/gallery/thumb/04.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1024" height="1280" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/05.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/05.webp">
+          <img src="assets/images/gallery/thumb/05.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1024" height="1280" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/06.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/06.webp">
+          <img src="assets/images/gallery/thumb/06.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/07.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/07.webp">
+          <img src="assets/images/gallery/thumb/07.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/08.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/08.webp">
+          <img src="assets/images/gallery/thumb/08.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/09.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/09.webp">
+          <img src="assets/images/gallery/thumb/09.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/10.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/10.webp">
+          <img src="assets/images/gallery/thumb/10.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/11.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/11.webp">
+          <img src="assets/images/gallery/thumb/11.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1024" height="1280" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+      <figure class="gallery__item" data-full="assets/images/gallery/full/12.webp" data-caption="Nameštaj po meri">
+      <button class="gallery__open" type="button" aria-label="Uvećaj sliku: Nameštaj po meri">
+        <picture>
+        <source type="image/webp" srcset="assets/images/gallery/thumb/12.webp">
+          <img src="assets/images/gallery/thumb/12.jpg" alt="Nameštaj po meri — Imperia, izrada nameštaja po meri Beograd i Novi Sad" width="1080" height="1080" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </figure>
+    <!-- PREVIEW:END -->
+        </div>
+
+        <div class="preview__more" data-reveal>
+          <a class="btn btn--ghost" href="galerija.html">Pogledajte celu galeriju</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- CLOSING CTA                                                         -->
+    <!-- =================================================================== -->
+    <section class="section cta-band">
+      <div class="container">
+        <div class="cta-band__inner" data-reveal>
+          <p class="eyebrow">Vaš projekat</p>
+          <h2>Spremni za kuhinju o kojoj ste maštali?</h2>
+          <p>Pošaljite nam dimenzije prostora i svoje želje — pripremamo ponudu bez obaveza.</p>
+          <a class="btn btn--solid" href="kontakt.html">Zatražite ponudu</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER (identical on every page)                                      -->
+  <!-- ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="footer-col">
+          <a class="wordmark" href="index.html">Imperia</a>
+          <p class="site-footer__tagline">
+            Kuhinje i nameštaj po meri, izrađeni sa pažnjom prema svakom detalju.
+          </p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col__title">Pišite nam</p>
+          <a class="btn btn--whatsapp" href="https://wa.me/381628350793" target="_blank" rel="noopener" aria-label="Pišite nam na WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a12.062 12.062 0 0 0 5.734 1.459h.005c6.581 0 11.945-5.335 11.948-11.893a11.821 11.821 0 0 0-3.495-8.464"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col__title">Kontakt</p>
+          <div class="footer-col__list">
+            <a href="tel:+381628350793">+381 62 835 0793</a>
+            <a href="mailto:kuhinjepomeribgns@gmail.com">kuhinjepomeribgns@gmail.com</a>
+            <span>Beograd &middot; Novi Sad</span>
+            <a href="https://www.instagram.com/kuhinje_po_meri_bg_ns/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Imperia. Sva prava zadržana.</p>
+        <p>Kuhinje po meri &middot; Beograd i Novi Sad</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- LIGHTBOX (shared markup for the gallery preview)                      -->
+  <!-- ===================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pregled slike">
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Zatvori">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Prethodna slika">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Sledeća slika">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <figure class="lightbox__stage">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </figure>
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+    <p class="lightbox__counter" id="lightbox-counter"></p>
+  </div>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/lightbox.js" defer></script>
+</body>
+</html>

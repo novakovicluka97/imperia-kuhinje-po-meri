@@ -1,0 +1,67 @@
+/* ===========================================================================
+   LAYOUT — containers, sections, structural helpers.
+   =========================================================================== */
+
+/* --- Containers ----------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.container--wide { max-width: var(--container-wide); }
+.container--narrow { max-width: 760px; }
+
+/* --- Sections ------------------------------------------------------------- */
+.section { padding-block: var(--section-py); }
+.section--alt { background-color: var(--color-bg-alt); }
+.section--tight { padding-block: clamp(3rem, 6vw, 5rem); }
+
+/* --- Page header (small intro band at the top of inner pages) ------------- */
+.page-head {
+  padding-top: calc(var(--header-h) + clamp(3rem, 8vw, 6rem));
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  text-align: center;
+}
+
+/* --- Section heading block ------------------------------------------------ */
+.section__head {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+.section__head p {
+  margin-inline: auto;
+  margin-top: var(--sp-2);
+  color: var(--color-text-muted);
+}
+
+/* Small uppercase gold label that sits above a heading. */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--sp-2);
+}
+
+/* --- Decorative gold hairline -------------------------------------------- */
+.divider {
+  width: 56px;
+  height: 1px;
+  border: 0;
+  background: var(--color-accent);
+  margin: var(--sp-3) auto 0;
+}
+.divider--left { margin-inline: 0; }
+
+/* --- Generic centring helper --------------------------------------------- */
+.text-center { text-align: center; }
+.stack-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

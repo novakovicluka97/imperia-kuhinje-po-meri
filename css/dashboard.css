@@ -1,0 +1,314 @@
+/* ===========================================================================
+   IMPERIA — DASHBOARD  (single control panel for the whole website)
+   ===========================================================================
+   ⭐  THIS IS THE ONLY FILE YOU NEED TO EDIT TO RESIZE / RESTYLE THE SITE.  ⭐
+
+   Everything visual that you might want to tweak — fonts, colours, and the
+   SIZES of the logo, header, hero, buttons, gallery and contact section — is
+   collected here as named "variables". Every other stylesheet only READS
+   these variables; none of them hard-code a size or colour any more.
+
+   ---------------------------------------------------------------------------
+   HOW IT WORKS  (30-second crash course)
+   ---------------------------------------------------------------------------
+   A line like:        --logo-sub-size: 9.5px;
+                       │   │             │
+                       │   │             └─ the value you change
+                       │   └─ the name (never change this part)
+                       └─ a "CSS variable" — a setting used across the site
+
+   To make the logo subtitle bigger, you change ONLY the value
+   (for example from 9.5px to 13px):
+                       --logo-sub-size: 13px;
+
+   Save the file, refresh the browser — done. Nothing else to touch.
+
+   (Important: never put a /* ... *-slash comment INSIDE another comment —
+   CSS comments cannot be nested.)
+
+   ---------------------------------------------------------------------------
+   UNITS — what the numbers mean
+   ---------------------------------------------------------------------------
+     px      a fixed size in pixels.            16px is roughly normal text.
+     rem     a size relative to the base text.  1rem = 17px here.
+     em      a size relative to THIS element's own text (used for padding,
+             so a button's padding grows automatically when its text grows).
+     vw      1% of the screen WIDTH  — makes things scale with the screen.
+     svh     1% of the screen HEIGHT (the "small" height, mobile-safe).
+     clamp(MIN, IDEAL, MAX)  picks IDEAL but never smaller than MIN or larger
+             than MAX. This is how the site scales smoothly between phone and
+             desktop. To "lock" a size, set MIN, IDEAL and MAX all the same.
+
+   ---------------------------------------------------------------------------
+   TABLE OF CONTENTS
+   ---------------------------------------------------------------------------
+     1. FONTS .............. typefaces, weights, letter-spacing
+     2. COLOURS ............ brand palette
+     3. LOGO ............... header logo (name + subtitle) and footer logo
+     4. HEADER ............. top bar height + navigation text
+     5. HERO ............... full-screen banner height + scroll cue
+     6. BUTTONS ............ every button group, by location
+     7. GALLERY ............ photo grid columns + the lightbox (zoom view)
+     8. TEXT SIZES ......... headings and body copy across the site
+     9. SPACING ............ the gap scale used for margins / padding
+    10. LAYOUT ............. page width, section height, header offset
+    11. STYLE DETAILS ...... corners, borders, animation speed, shadow
+   =========================================================================== */
+
+
+/* ===========================================================================
+   1. FONTS
+   ---------------------------------------------------------------------------
+   The whole site uses just TWO typefaces.
+
+   TO CHANGE A FONT:
+     a) Pick one on  https://fonts.google.com
+     b) On Google Fonts: "Get font" -> "Get embed code" -> choose "@import",
+        and paste its URL in place of the @import line just below.
+     c) Put the new font's name into --font-heading and/or --font-body.
+   =========================================================================== */
+
+/* --- The @import MUST stay the very first real line of this file. --------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+
+  /* The two typefaces. The list after the main name is a "fallback" chain —
+     fonts used only if the main one fails to load. Leave the fallbacks be. */
+  --font-heading: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+                                          /* headings + the IMPERIA logo     */
+  --font-body:    'Jost', 'Helvetica Neue', Arial, sans-serif;
+                                          /* paragraphs, nav, buttons, forms */
+
+  /* Font WEIGHT = how thick the strokes are. 300 = light/airy, 700 = bold. */
+  --font-weight-heading: 400;             /* headings: 300 delicate · 500 bold */
+  --font-weight-body:    300;             /* body:     300 airy · 400 standard */
+
+  /* Letter-spacing = the gap BETWEEN letters (only for the spaced-out caps). */
+  --tracking-wordmark: 0.34em;            /* the plain-text "Imperia" wordmark */
+  --tracking-label:    0.18em;            /* nav links, buttons, eyebrow labels */
+
+
+  /* =========================================================================
+     2. COLOURS
+     -------------------------------------------------------------------------
+     Colours are written as #RRGGBB hex codes, or rgba(r,g,b,alpha) where the
+     last number (0-1) is opacity. Pick new colours at  https://oklch.com  or
+     any colour picker. The site has a dark, warm, gold-accent look.
+     ========================================================================= */
+
+  /* -- Backgrounds (darkest to lightest) ----------------------------------- */
+  --color-bg:           #0B0B0B;   /* main page background — near-black, warm */
+  --color-bg-alt:       #131210;   /* every OTHER section, for subtle banding */
+  --color-surface:      #1C1A15;   /* cards, form fields, the zoom-view panel */
+  --color-surface-2:    #24211B;   /* a card/field when hovered or "raised"   */
+
+  /* -- Text ---------------------------------------------------------------- */
+  --color-text:         #F0EBE1;   /* main text — warm ivory                  */
+  --color-text-muted:   #9C968A;   /* secondary text (intro paragraphs, etc.) */
+  --color-text-faint:   #6E6A61;   /* fine print, captions, disabled hints    */
+
+  /* -- The gold brand accent ---------------------------------------------- */
+  --color-accent:        #C9A977;  /* antique gold — borders, labels, the logo subtitle */
+  --color-accent-strong: #E3CB98;  /* brighter gold — used on hover / emphasis */
+  --color-on-accent:     #100F0C;  /* text placed ON a gold button background  */
+
+  /* -- Lines & overlays ---------------------------------------------------- */
+  --color-border:   rgba(201, 169, 119, 0.30);  /* faint gold hairline border */
+  --color-hairline: rgba(240, 235, 225, 0.10);  /* faint neutral divider line */
+  --color-overlay:  rgba(7, 7, 6, 0.86);        /* dark screen behind the zoom view */
+
+  --color-danger:   #D98A6A;       /* form error messages                     */
+
+
+  /* =========================================================================
+     3. LOGO
+     -------------------------------------------------------------------------
+     The header logo is the centred "IMPERIA" mark with the small gold
+     "KUHINJE PO MERI" subtitle and two hairlines. It is drawn as crisp
+     vector art, so it stays sharp at any size.
+
+       --logo-size        = how big the WHOLE logo is on screen.
+       --logo-name-size   = the "IMPERIA" letters, RELATIVE to the rest.
+       --logo-sub-size    = the "KUHINJE PO MERI" subtitle, RELATIVE to the rest.
+
+     So: --logo-size scales everything together; the other two change the
+     internal proportions. To just make the subtitle bigger, raise
+     --logo-sub-size on its own.
+
+     NOTE: --logo-name-size / --logo-sub-size are measured in the logo's own
+     internal drawing grid (the whole logo is 96 units tall). Treat them as
+     relative numbers, not real pixels.
+     ========================================================================= */
+
+  /* -- Overall logo size (scales the name, subtitle and lines together) ---- */
+  --logo-size:          clamp(34px, 6.4vw, 46px);  /* logo height at the top of the landing page */
+  --logo-size-scrolled: clamp(32px, 5.6vw, 40px);  /* logo height once the page is scrolled / on inner pages */
+
+  /* -- The "IMPERIA" name -------------------------------------------------- */
+  --logo-name-size:     84px;      /* the big letters. Recommended range: 56-84 */
+  --logo-name-tracking: 0.34em;    /* gap between the big letters               */
+
+  /* -- The "KUHINJE PO MERI" subtitle  ⭐ (this is the one you asked about) - */
+  --logo-sub-size:      25px;     /* subtitle size. Recommended range: 7-15.
+                                      Raise this to make the subtitle bigger.  */
+  --logo-sub-tracking:  0.42em;    /* gap between the subtitle letters. If you
+                                      enlarge the subtitle and it gets too wide,
+                                      lower this a little (e.g. 0.30em).        */
+  --logo-sub-shift:     0px;       /* nudge the subtitle down (+) or up (-) a
+                                      touch, e.g. 1.5px, if resizing it throws
+                                      the spacing off. 0 = leave as designed.   */
+
+  /* -- The plain-text "Imperia" logo in the page FOOTER -------------------- */
+  --footer-logo-size:   1.6rem;    /* footer wordmark size                     */
+
+
+  /* =========================================================================
+     4. HEADER
+     -------------------------------------------------------------------------
+     The fixed bar at the top of every page. It is tall and see-through over
+     the hero, then shrinks and turns near-black once you scroll.
+     ========================================================================= */
+
+  --header-height:          86px;  /* header height at the very top of the landing page */
+  --header-height-scrolled: 70px;  /* header height after scrolling / on inner pages     */
+
+  /* Navigation links ("Galerija" on the left, the menu items, etc.) */
+  --nav-link-size:        2rem; /* desktop nav link text size               */
+  --nav-mobile-link-size: clamp(2rem, 9vw, 3rem);  /* big links in the phone menu */
+
+
+  /* =========================================================================
+     5. HERO
+     -------------------------------------------------------------------------
+     The full-screen photo banner at the top of the landing page. It shows
+     only the photo + two buttons (the main heading is there for Google but
+     hidden from view). The hero BUTTONS are configured in section 6 below.
+     ========================================================================= */
+
+  --hero-height:      100svh;      /* banner height. 100svh = one full screen.
+                                      Try 90svh or 80svh for a shorter hero.   */
+  --hero-scroll-size: 0.62rem;     /* the small "Istražite" scroll cue text    */
+
+
+  /* =========================================================================
+     6. BUTTONS
+     -------------------------------------------------------------------------
+     Each button group is controlled separately so you can size them by
+     location. For every group there are three settings:
+
+         ...-size    the TEXT size of the button.
+         ...-pad-y   padding above & below the text  (button height).
+         ...-pad-x   padding left & right of the text (button width).
+
+     Padding uses "em" so it scales WITH the text automatically — usually you
+     only need to change ...-size. Lower the pad values for slimmer buttons.
+     ========================================================================= */
+
+  /* -- DEFAULT — any button not covered by a group below (e.g. the closing
+        "Zatražite ponudu" call-to-action band, footer WhatsApp button). ----- */
+  --btn-size:  0.74rem;
+  --btn-pad-y: 1.05em;
+  --btn-pad-x: 2.4em;
+
+  /* -- HEADER "Kontakt" button (top-right; the small outlined one). -------- */
+  --header-btn-size:  1.4rem;
+  --header-btn-pad-y: 0.75em;
+  --header-btn-pad-x: 1.6em;
+
+  /* -- HERO buttons — "Zatražite ponudu" + "Pogledajte galeriju" on the
+        landing-page banner (these also become the fixed bar on mobile). ---- */
+  --hero-btn-size:  0.74rem;
+  --hero-btn-pad-y: 1.05em;
+  --hero-btn-pad-x: 2.4em;
+
+  /* -- GALLERY button — the "Pogledajte celu galeriju" button under the
+        photo preview on the landing page. --------------------------------- */
+  --gallery-btn-size:  0.74rem;
+  --gallery-btn-pad-y: 1.05em;
+  --gallery-btn-pad-x: 2.4em;
+
+  /* -- CONTACT buttons — every button on the kontakt.html page (the WhatsApp
+        submit button, "Pišite nam na WhatsApp", "Pozovite nas"). ----------- */
+  --contact-btn-size:  0.74rem;
+  --contact-btn-pad-y: 1.05em;
+  --contact-btn-pad-x: 2.4em;
+
+
+  /* =========================================================================
+     7. GALLERY
+     -------------------------------------------------------------------------
+     The photo grid (preview on the landing page + full grid on galerija.html)
+     and the lightbox — the dark full-screen zoom view opened on a photo click.
+     ========================================================================= */
+
+  /* How many photo COLUMNS the grid uses, at three screen sizes. More columns
+     = smaller photos. The site automatically uses the right one per screen.  */
+  --gallery-columns:        4;     /* wide desktop                            */
+  --gallery-columns-tablet: 3;     /* tablet / narrow desktop (<= 1100px wide) */
+  --gallery-columns-mobile: 2;     /* phone (<= 720px wide)                   */
+
+  --gallery-gap: clamp(0.6rem, 1.4vw, 1.15rem);  /* gap between the photos    */
+
+  /* The round arrow / close buttons inside the zoom view. */
+  --lightbox-btn-size:        52px;
+  --lightbox-btn-size-mobile: 44px;
+
+
+  /* =========================================================================
+     8. TEXT SIZES  (headings & body copy used across all pages)
+     -------------------------------------------------------------------------
+     Most of these use clamp() so they scale between phone and desktop.
+     ========================================================================= */
+
+  --fs-hero:    clamp(2.9rem, 8vw, 6.6rem);     /* very large display text    */
+  --fs-display: clamp(2rem, 4.6vw, 3.6rem);     /* section headings (h2)      */
+  --fs-h3:      clamp(1.35rem, 2.4vw, 1.95rem); /* sub-headings (h3)          */
+  --fs-lead:    clamp(1.05rem, 1.5vw, 1.3rem);  /* intro / lead paragraphs    */
+  --fs-body:    1.0625rem;                       /* normal paragraph text      */
+  --fs-small:   0.84rem;                         /* small text, captions       */
+  --fs-label:   0.74rem;                         /* uppercase mini-labels      */
+
+
+  /* =========================================================================
+     9. SPACING SCALE
+     -------------------------------------------------------------------------
+     A fixed ladder of gap sizes used for margins and padding everywhere, so
+     spacing stays consistent. --sp-1 is tiny, --sp-7 is huge.
+     ========================================================================= */
+
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6rem;
+  --sp-7: 9rem;
+
+
+  /* =========================================================================
+     10. LAYOUT
+     ========================================================================= */
+
+  --container-max:  1280px;        /* max content width on normal pages       */
+  --container-wide: 1600px;        /* max content width for the full gallery   */
+  --container-pad:  clamp(1.25rem, 5vw, 4rem);  /* left/right page breathing room */
+  --section-py:     clamp(4.5rem, 10vw, 9.5rem);/* top/bottom height of a section */
+
+  /* Used by other files so in-page links and the hero clear the fixed header.
+     These mirror section 4 — change the header size THERE, not here.         */
+  --header-h: var(--header-height);
+
+
+  /* =========================================================================
+     11. STYLE DETAILS
+     ========================================================================= */
+
+  --radius:      2px;              /* corner rounding — kept minimal/premium   */
+  --border-thin: 1px;              /* standard hairline thickness              */
+
+  --transition:      320ms cubic-bezier(0.4, 0, 0.2, 1);    /* normal animation speed */
+  --transition-slow: 620ms cubic-bezier(0.22, 1, 0.36, 1);  /* slow animation speed   */
+
+  --shadow-soft: 0 18px 50px -24px rgba(0, 0, 0, 0.9);      /* soft drop shadow */
+}

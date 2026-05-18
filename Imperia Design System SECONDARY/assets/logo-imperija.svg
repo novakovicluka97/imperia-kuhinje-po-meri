@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 96" role="img" aria-label="IMPERIJA — Kuhinje po meri">
+  <text x="270" y="60" text-anchor="middle" font-family="Cormorant Garamond, Times New Roman, serif" font-weight="500" font-size="72" letter-spacing="0.34em" fill="#1A1916">IMPERIJA</text>
+  <line x1="140" y1="78" x2="225" y2="78" stroke="#6B4A2B" stroke-width="0.75"></line>
+  <line x1="315" y1="78" x2="400" y2="78" stroke="#6B4A2B" stroke-width="0.75"></line>
+  <text x="270" y="82" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-weight="500" font-size="9.5" letter-spacing="0.42em" fill="#6B4A2B">KUHINJE PO MERI</text>
+</svg>

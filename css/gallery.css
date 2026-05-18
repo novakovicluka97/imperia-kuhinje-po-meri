@@ -1,0 +1,153 @@
+/* ===========================================================================
+   GALLERY — masonry grid (preview + full gallery) and the lightbox.
+   =========================================================================== */
+
+/* === MASONRY GRID ========================================================= */
+/* CSS multi-column masonry — shows every photo uncropped, at its true ratio. */
+.gallery-grid {
+  columns: var(--gallery-columns);             /* dashboard › 7. GALLERY */
+  column-gap: var(--gallery-gap);
+}
+@media (max-width: 1100px) { .gallery-grid { columns: var(--gallery-columns-tablet); } }
+@media (max-width: 720px)  { .gallery-grid { columns: var(--gallery-columns-mobile); } }
+
+.gallery__item {
+  break-inside: avoid;
+  margin-bottom: var(--gallery-gap);           /* dashboard › 7. GALLERY */
+}
+
+/* The clickable image tile. */
+.gallery__open {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+}
+.gallery__open img {
+  width: 100%;
+  height: auto;
+  transition: transform var(--transition-slow);
+}
+.gallery__open::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 7, 6, 0.72), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.gallery__open:hover img { transform: scale(1.055); }
+.gallery__open:hover::after { opacity: 1; }
+
+/* caption revealed on hover */
+.gallery__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 1.2rem;
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.gallery__caption::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--color-accent);
+  flex: none;
+}
+.gallery__open:hover .gallery__caption,
+.gallery__open:focus-visible .gallery__caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* === LIGHTBOX ============================================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--color-overlay);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.lightbox.is-open { opacity: 1; visibility: visible; }
+
+.lightbox__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+.lightbox__img {
+  max-width: min(92vw, 1080px);
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.lightbox__caption {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.lightbox__counter {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+/* control buttons */
+.lightbox__btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lightbox-btn-size);             /* dashboard › 7. GALLERY */
+  height: var(--lightbox-btn-size);
+  color: var(--color-text);
+  background: rgba(11, 11, 11, 0.55);
+  border: 1px solid var(--color-hairline);
+  border-radius: 50%;
+  transition: background-color var(--transition), color var(--transition);
+}
+.lightbox__btn:hover {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+.lightbox__btn svg { width: 20px; height: 20px; }
+
+.lightbox__close { top: clamp(1rem, 4vw, 2rem); right: clamp(1rem, 4vw, 2rem); }
+.lightbox__prev  { left: clamp(0.5rem, 3vw, 2rem);  top: 50%; transform: translateY(-50%); }
+.lightbox__next  { right: clamp(0.5rem, 3vw, 2rem); top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 720px) {
+  .lightbox__prev  { left: 0.5rem; }
+  .lightbox__next  { right: 0.5rem; }
+  .lightbox__btn   { width: var(--lightbox-btn-size-mobile); height: var(--lightbox-btn-size-mobile); }
+}

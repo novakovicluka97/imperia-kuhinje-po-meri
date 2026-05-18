@@ -1,0 +1,277 @@
+/* ============================================================
+   Imperia Design System — colors + type
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* --- Base palette ----------------------------------------- */
+  --ink:        #1A1916;   /* warmed near-black; primary text / dark surfaces */
+  --ink-90:     #2C2A26;
+  --ink-70:     #4A4741;
+  --ink-50:     #6E6A62;
+
+  --bone:       #F4EFE7;   /* primary background; warm off-white */
+  --bone-90:    #ECE5D9;
+  --bone-70:    #E0D7C7;
+  --bone-50:    #D2C7B3;
+
+  --walnut:     #6B4A2B;   /* primary timber accent */
+  --walnut-soft:#8A6A4A;
+  --brass:      #A48758;   /* secondary metallic accent */
+  --stone:      #8B847A;   /* neutral grey for secondary copy */
+  --stone-soft: #B3ADA3;
+  --sage:       #5A6650;   /* single cool accent, used sparingly */
+
+  --paper:      #FAF7F1;   /* slightly lighter than bone, for raised cards */
+
+  --rule:       rgba(107, 74, 43, 0.20);   /* walnut hairline */
+  --rule-strong:rgba(26, 25, 22, 0.18);    /* ink hairline */
+
+  /* --- Semantic colour tokens -------------------------------- */
+  --bg:           var(--bone);
+  --bg-raised:    var(--paper);
+  --bg-inverse:   var(--ink);
+
+  --fg1:          var(--ink);      /* primary text */
+  --fg2:          var(--ink-70);   /* secondary text */
+  --fg3:          var(--stone);    /* meta / captions */
+  --fg-inverse:   var(--bone);     /* on dark surfaces */
+
+  --accent:       var(--walnut);
+  --accent-soft:  var(--brass);
+
+  --border:       var(--rule);
+  --border-strong:var(--rule-strong);
+
+  /* --- Type families ---------------------------------------- */
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body:    "Manrope", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Type scale (semantic) -------------------------------- */
+  --t-display:    clamp(64px, 9vw, 144px);  /* hero wordmark, splash */
+  --t-h1:         clamp(44px, 5.2vw, 80px); /* page headlines */
+  --t-h2:         clamp(32px, 3.4vw, 52px);
+  --t-h3:         28px;
+  --t-h4:         22px;
+  --t-body-lg:    18px;
+  --t-body:       16px;
+  --t-small:      14px;
+  --t-meta:       12px;
+  --t-eyebrow:    11px;
+
+  /* --- Line heights ---------------------------------------- */
+  --lh-display:   0.92;
+  --lh-heading:   1.08;
+  --lh-body:      1.6;
+  --lh-tight:     1.25;
+
+  /* --- Letter spacing -------------------------------------- */
+  --ls-display:   -0.015em;
+  --ls-heading:   -0.01em;
+  --ls-body:       0;
+  --ls-eyebrow:    0.18em;
+  --ls-button:     0.04em;
+
+  /* --- Spacing (4px base, 8px component, 24px page) -------- */
+  --sp-0:   0;
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   24px;
+  --sp-6:   32px;
+  --sp-7:   48px;
+  --sp-8:   64px;
+  --sp-9:   96px;
+  --sp-10:  128px;
+  --sp-11:  160px;
+
+  /* --- Radii (sharp by default) ---------------------------- */
+  --r-0:    0;
+  --r-1:    2px;
+  --r-2:    4px;
+  --r-round: 999px;
+
+  /* --- Elevation ------------------------------------------- */
+  --elev-0: none;
+  --elev-1: 0 1px 0 rgba(26,25,22,0.06), 0 24px 48px -24px rgba(26,25,22,0.20);
+  --elev-2: 0 1px 0 rgba(26,25,22,0.08), 0 40px 80px -32px rgba(26,25,22,0.28);
+
+  /* --- Motion ---------------------------------------------- */
+  --ease:     cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur-fast: 160ms;
+  --dur:      240ms;
+  --dur-slow: 480ms;
+
+  /* --- Layout ---------------------------------------------- */
+  --max-w:      1440px;
+  --measure:    64ch;
+  --gutter:     24px;
+  --page-pad:   clamp(24px, 6vw, 96px);
+}
+
+/* ============================================================
+   Base resets + semantic element styles
+   ============================================================ */
+
+html {
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body { margin: 0; }
+
+::selection { background: var(--ink); color: var(--bone); }
+
+/* ----- Display & headings ----- */
+
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  margin: 0 0 var(--sp-5);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  margin: 0 0 var(--sp-5);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h3);
+  line-height: var(--lh-tight);
+  letter-spacing: 0;
+  margin: 0 0 var(--sp-4);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--t-h4);
+  line-height: var(--lh-tight);
+  margin: 0 0 var(--sp-3);
+}
+
+.h-italic, h1.italic, h2.italic, .display.italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ----- Body copy ----- */
+
+p, .p {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg1);
+  margin: 0 0 var(--sp-4);
+  max-width: var(--measure);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.4;
+  color: var(--fg2);
+  max-width: 48ch;
+}
+
+small, .small {
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--fg2);
+}
+
+.meta {
+  font-family: var(--font-body);
+  font-size: var(--t-meta);
+  line-height: 1.4;
+  color: var(--fg3);
+}
+
+/* ----- Eyebrow / section labels ----- */
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--walnut);
+  display: inline-block;
+}
+
+/* ----- Links ----- */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(var(--walnut), var(--walnut));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+a:hover { background-size: 100% 1px; }
+
+/* ----- Inverse surfaces ----- */
+
+.on-ink {
+  background: var(--ink);
+  color: var(--bone);
+}
+.on-ink .eyebrow { color: var(--brass); }
+.on-ink a { background-image: linear-gradient(var(--brass), var(--brass)); }
+.on-ink ::selection { background: var(--bone); color: var(--ink); }
+
+/* ----- Rule ----- */
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--sp-7) 0;
+}
+.rule-strong {
+  border-top: 1px solid var(--ink);
+}
+.rule-bar {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--walnut);
+}
+
+/* ----- Numbers (for section markers like "01 · The Drawing") ----- */
+
+.numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--walnut);
+}

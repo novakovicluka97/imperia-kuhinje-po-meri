@@ -1,0 +1,96 @@
+/* ===========================================================================
+   BASE — element defaults & typography.
+   =========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  /* offset in-page anchor jumps so the fixed header doesn't cover them */
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* When a modal / mobile menu is open, JS adds this class to lock scrolling. */
+body.is-locked { overflow: hidden; }
+
+/* --- Headings ------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.14;
+  letter-spacing: 0.005em;
+  color: var(--color-text);
+}
+
+h2 { font-size: var(--fs-display); }
+h3 { font-size: var(--fs-h3); }
+
+/* --- Text ----------------------------------------------------------------- */
+p { max-width: 64ch; }
+
+strong { font-weight: 500; }
+
+/* --- Links ---------------------------------------------------------------- */
+a { transition: color var(--transition); }
+a:hover { color: var(--color-accent-strong); }
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* --- Accessibility: visually-hidden but readable by screen readers -------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- "Skip to content" link ---------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.skip-link:focus { top: 1rem; }
+
+/* --- Scroll-reveal animation --------------------------------------------------
+   Elements marked [data-reveal] gently fade up as they enter the viewport.
+   The hidden start-state is applied ONLY when JS is active (html.js-reveal),
+   so the site is fully visible if JavaScript is disabled.                    */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+}
+.js-reveal [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}

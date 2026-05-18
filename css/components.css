@@ -1,0 +1,224 @@
+/* ===========================================================================
+   COMPONENTS — buttons, links, form controls, cards.
+   =========================================================================== */
+
+/* === BUTTONS ============================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  /* size + padding come from dashboard › 6. BUTTONS (DEFAULT). Individual
+     button groups (hero, header, gallery, contact) override these below
+     and in their own stylesheets. */
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  font-family: var(--font-body);
+  font-size: var(--btn-size);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-align: center;
+  border: var(--border-thin) solid var(--color-accent);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+/* Outlined / ghost button — the default look. */
+.btn--ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* Solid gold button — primary call-to-action. */
+.btn--solid {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  position: relative;
+  overflow: hidden;
+}
+.btn--solid:hover {
+  background: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+  color: var(--color-on-accent);
+}
+/* A slow, occasional sheen sweeps across the gold — like light catching
+   brass. Sweeps once (~1s), then rests off-screen for the rest of the cycle. */
+.btn--solid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -80%;
+  width: 55%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: btn-sheen 7s ease-in-out 1.6s infinite;
+}
+@keyframes btn-sheen {
+  0%   { left: -80%; }
+  16%  { left: 160%; }
+  100% { left: 160%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn--solid::after { animation: none; }
+}
+
+/* Pale outlined button for use on a photographic / dark hero background. */
+.btn--light {
+  border-color: rgba(240, 235, 225, 0.55);
+}
+.btn--light:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-on-accent);
+}
+
+/* WhatsApp contact button — uses the WhatsApp brand green. */
+.btn--whatsapp {
+  background: #25d366;
+  border-color: #25d366;
+  color: #ffffff;
+}
+.btn--whatsapp:hover {
+  background: #20bd5a;
+  border-color: #20bd5a;
+  color: #ffffff;
+}
+.btn--whatsapp svg {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+}
+
+.btn--block { display: flex; width: 100%; }
+
+/* The small outlined "Kontakt" button in the header — dashboard › 6. BUTTONS. */
+.btn--small {
+  font-size: var(--header-btn-size);
+  padding: var(--header-btn-pad-y) var(--header-btn-pad-x);
+}
+
+/* === TEXT LINK WITH ARROW ================================================= */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition), border-color var(--transition);
+}
+.link-arrow:hover {
+  color: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+}
+.link-arrow svg { width: 1.1em; height: 1.1em; }
+
+/* === FORM CONTROLS ======================================================== */
+.field { margin-bottom: var(--sp-3); }
+
+.field__label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.field__label .req { color: var(--color-accent); }
+
+.field__control {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: var(--border-thin) solid var(--color-hairline);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), background-color var(--transition);
+}
+.field__control::placeholder { color: var(--color-text-faint); }
+.field__control:hover { border-color: var(--color-border); }
+.field__control:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-surface-2);
+}
+textarea.field__control { resize: vertical; min-height: 7rem; }
+
+/* native select arrow */
+select.field__control {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-accent) 50%),
+    linear-gradient(135deg, var(--color-accent) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) calc(1.4rem),
+    calc(100% - 16px) calc(1.4rem);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.8rem;
+}
+
+/* input with a unit suffix (e.g. m²) */
+.field__unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.field__unit .field__control { padding-right: 3.4rem; }
+.field__unit::after {
+  content: attr(data-unit);
+  position: absolute;
+  right: 1.1rem;
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+/* validation error message */
+.field__error {
+  display: block;
+  margin-top: 0.4rem;
+  min-height: 1.1rem;
+  font-size: var(--fs-small);
+  color: var(--color-danger);
+}
+
+/* invalid state */
+.field.is-invalid .field__control {
+  border-color: var(--color-danger);
+}
+
+/* === CARD ================================================================= */
+.card {
+  background: var(--color-surface);
+  border: var(--border-thin) solid var(--color-hairline);
+  border-radius: var(--radius);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+/* === FORM SUCCESS / FEEDBACK NOTE ========================================= */
+.form-note {
+  margin-top: var(--sp-2);
+  padding: 0.9rem 1.1rem;
+  border-left: 2px solid var(--color-accent);
+  background: var(--color-surface);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+.form-note[hidden] { display: none; }

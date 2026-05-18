@@ -1,0 +1,16 @@
+{
+  "name": "imperia-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Dev-time content pipeline for the Imperia website. NOT part of the deployed site.",
+  "scripts": {
+    "download": "node 1-download-images.mjs",
+    "optimize": "node 2-optimize-images.mjs",
+    "generate": "node 3-generate-html.mjs",
+    "build": "npm run download && npm run optimize && npm run generate"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

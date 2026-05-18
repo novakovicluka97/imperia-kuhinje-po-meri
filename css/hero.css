@@ -1,0 +1,191 @@
+/* ===========================================================================
+   HERO — full-screen landing banner.
+   =========================================================================== */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;                           /* fallback for old browsers */
+  min-height: var(--hero-height);              /* dashboard › 5. HERO */
+  padding: calc(var(--header-h) + var(--sp-4)) var(--container-pad) var(--sp-6);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* --- Background image (replace later with a <video>) ---------------------- */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.hero__media img {
+  /* Absolute insets give object-fit:cover a definite box to crop into.
+     A bare height:100% does not resolve against the absolutely-positioned
+     .hero__media, so the image would otherwise collapse to its intrinsic
+     aspect ratio and overflow / leave a gap instead of filling the hero. */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark scrim so the wordmark stays legible over any photo.
+   A centred radial darkens the area behind the text; the linear keeps the
+   top (header) and bottom (scroll cue) readable. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 54% at 50% 50%,
+      rgba(11, 11, 11, 0.66) 0%,
+      rgba(11, 11, 11, 0) 72%),
+    linear-gradient(
+      to bottom,
+      rgba(11, 11, 11, 0.58) 0%,
+      rgba(11, 11, 11, 0.42) 40%,
+      rgba(11, 11, 11, 0.86) 100%
+    );
+}
+
+/* --- Hero content --------------------------------------------------------- */
+.hero__content {
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* soft glow keeps every line legible over light or busy photos */
+  text-shadow: 0 2px 34px rgba(0, 0, 0, 0.6);
+}
+
+.hero__eyebrow {
+  font-size: var(--fs-label);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero__title {
+  margin-top: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.hero__wordmark {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--fs-hero);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wordmark);
+  padding-left: var(--tracking-wordmark);
+  color: var(--color-text);
+}
+.hero__lede {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-lead);
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  max-width: 30ch;
+}
+
+.hero__actions {
+  /* Hidden on desktop — the same two actions ("Zatražite ponudu" +
+     "Pogledajte galeriju") already live in the header. Below 860px they
+     reappear as the fixed bottom CTA bar (see the mobile media query). */
+  margin-top: 0;
+  display: none;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  justify-content: center;
+}
+/* The hero's two buttons — sized from dashboard › 6. BUTTONS (HERO). */
+.hero__actions .btn {
+  font-size: var(--hero-btn-size);
+  padding: var(--hero-btn-pad-y) var(--hero-btn-pad-x);
+}
+
+/* --- Scroll cue ----------------------------------------------------------- */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 3vh, 2.2rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--hero-scroll-size);          /* dashboard › 5. HERO */
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  animation: heroScroll 2.4s ease-in-out infinite;
+}
+@keyframes heroScroll {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50%      { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+}
+
+@media (max-width: 860px) {
+  .hero__scroll { display: none; }
+
+  /* No hero text on mobile any more, and the buttons sit in their own opaque
+     bar — so drop the heavy darkening scrim and let the photograph show. A
+     light top wash keeps the logo + hamburger legible; a soft bottom wash
+     blends the image into the fixed CTA bar. */
+  .hero__scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 11, 11, 0.66) 0%,
+      rgba(11, 11, 11, 0) 26%,
+      rgba(11, 11, 11, 0) 70%,
+      rgba(11, 11, 11, 0.62) 100%
+    );
+  }
+
+  /* On mobile the hero's two buttons detach from the centre and pin to the
+     bottom of the screen as one fixed, full-width bar — it replaces the old
+     single-button .cta-bar (now removed from this page). */
+  .hero__actions {
+    display: flex;
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 95;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    padding: 0.7rem var(--container-pad) calc(0.7rem + env(safe-area-inset-bottom));
+    background: rgba(11, 11, 11, 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--color-hairline);
+    /* glide up into place once the page has settled */
+    animation: cta-bar-rise 560ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
+  }
+  .hero__actions .btn { width: 100%; }
+
+  /* keep page content (the footer) clear of the fixed bar */
+  body.has-hero-cta { padding-bottom: calc(128px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 600px) {
+  .hero__eyebrow { letter-spacing: 0.2em; font-size: 0.68rem; }
+}
+
+@keyframes cta-bar-rise {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__actions { animation: none; }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 96" role="img" aria-label="IMPERIA">
+  
+  <text class="wordmark" x="240" y="60" text-anchor="middle">IMPERIA</text>
+  <line x1="120" y1="78" x2="200" y2="78" stroke="#6B4A2B" stroke-width="0.75"></line>
+  <line x1="280" y1="78" x2="360" y2="78" stroke="#6B4A2B" stroke-width="0.75"></line>
+  <text class="sub" x="240" y="82" text-anchor="middle">KUHINJE PO MERI</text>
+</svg>
