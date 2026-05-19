@@ -95,9 +95,9 @@
     <a class="site-header__brand" href="index.html" aria-label="Imperia — početna strana">
       <svg class="brandmark" viewBox="0 0 540 96" aria-hidden="true">
         <text class="brandmark__name" x="270" y="60" text-anchor="middle" font-size="72" letter-spacing="0.34em">IMPERIA</text>
-        <line class="brandmark__rule" x1="92" y1="78" x2="174" y2="78"/>
-        <line class="brandmark__rule" x1="366" y1="78" x2="448" y2="78"/>
         <text class="brandmark__sub" x="270" y="82" text-anchor="middle" font-size="9.5" letter-spacing="0.42em">KUHINJE PO MERI</text>
+        <!-- rule — sized & positioned in css/dashboard.css › 3. LOGO -->
+        <rect class="brandmark__rule" x="0" y="0" width="10" height="2"/>
       </svg>
     </a>
     <div class="site-header__right">
@@ -560,9 +560,15 @@
           <p class="footer-col__title">Kontakt</p>
           <div class="footer-col__list">
             <a href="tel:+381628350793">+381 62 835 0793</a>
-            <a href="mailto:kuhinjepomeribgns@gmail.com">kuhinjepomeribgns@gmail.com</a>
             <span>Beograd &middot; Novi Sad</span>
-            <a href="https://www.instagram.com/kuhinje_po_meri_bg_ns/" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer-ig" href="https://www.instagram.com/kuhinje_po_meri_bg_ns/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="2.2" y="2.2" width="19.6" height="19.6" rx="5.4"/>
+                <circle cx="12" cy="12" r="4.2"/>
+                <circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
           </div>
         </div>
       </div>

@@ -50,11 +50,12 @@
 .wordmark:hover { color: var(--color-accent-strong); }
 
 /* --- The IMPERIA brandmark (SVG logo in the centre of the header) ---------
-   An engraved wordmark with two fine walnut-gold hairlines flanking a
-   wide-tracked subtitle. It fades and settles down into place on load; the
-   hairlines draw open a beat later. Colours stay ivory/gold throughout —
-   the header sits on a dark surface in every state (transparent over the
-   hero, near-black once scrolled or on the inner pages).                    */
+   An engraved wordmark above a wide-tracked subtitle, with a thin gold rule
+   under the subtitle. It fades and settles down
+   into place on load; the rule draws open a beat later. Colours stay
+   ivory/gold/white throughout — the header sits on a dark surface in every
+   state (transparent over the hero, near-black once scrolled / on inner
+   pages). Every size, colour and position is set in css/dashboard.css.      */
 .site-header__brand {
   display: inline-flex;
   animation: brandmark-in var(--transition-slow) 120ms both;
@@ -63,6 +64,9 @@
   display: block;
   height: var(--logo-size);                    /* dashboard › 3. LOGO */
   width: auto;
+  /* let an enlarged subtitle spill past the SVG box instead of
+     being clipped — the dashboard can size it freely. */
+  overflow: visible;
   /* the logo eases down with the header as it shrinks on scroll */
   transition: height var(--transition);
 }
@@ -89,11 +93,20 @@
   fill: var(--color-accent);
   transition: fill var(--transition);
 }
+/* The decorative rule beneath the subtitle — a solid <rect> bar. Its length,
+   thickness, vertical position and colour all come from dashboard › 3. LOGO.
+   Sitting BELOW the subtitle, it can never strike through it at any size.
+   x/y/width/height are CSS "geometry properties" — they style SVG shapes. */
 .brandmark__rule {
-  stroke: var(--color-accent);
-  stroke-width: 0.75;
-  transition: stroke var(--transition);
-  /* draw each hairline outward from its own centre */
+  display: var(--logo-rule-display);
+  /* 270 = exact viewBox centre; --logo-rule-shift is an optional optical nudge. */
+  x: calc(255px - var(--logo-rule-width) / 2 + var(--logo-rule-shift));
+  y: var(--logo-rule-y);
+  width: var(--logo-rule-width);
+  height: var(--logo-rule-thickness);
+  fill: var(--logo-rule-color);
+  transition: fill var(--transition);
+  /* draw the rule open from its own centre on load */
   transform-box: fill-box;
   transform-origin: center;
   animation: brandmark-rule-in var(--transition-slow) 380ms both;
@@ -101,7 +114,7 @@
 
 /* hover keeps the gentle "highlight" the old text wordmark had */
 .site-header__brand:hover .brandmark__name { fill: var(--color-accent-strong); }
-.site-header__brand:hover .brandmark__rule { stroke: var(--color-accent-strong); }
+.site-header__brand:hover .brandmark__rule { fill: var(--color-accent-strong); }
 
 @keyframes brandmark-in {
   from { opacity: 0; transform: translateY(-7px); }

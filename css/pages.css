@@ -183,6 +183,13 @@
 
 @media (max-width: 860px) {
   .contact-layout { grid-template-columns: 1fr; }
+
+  /* On phones the sticky bottom button(s) already cover these actions,
+     so hide the duplicate NON-sticky buttons:
+       .preview__more  = the "Pogledajte celu galeriju" gallery button
+       .cta-band .btn  = the closing "Zatražite ponudu" button          */
+  .preview__more { display: none; }
+  .cta-band .btn { display: none; }
 }
 @media (max-width: 520px) {
   .field-row { grid-template-columns: 1fr; gap: 0; }

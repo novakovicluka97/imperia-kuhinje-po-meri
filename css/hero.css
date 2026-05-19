@@ -31,6 +31,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  /* hero photo brightness — adjust in dashboard › 5. HERO */
+  filter: brightness(var(--hero-brightness));
 }
 
 /* Dark scrim so the wordmark stays legible over any photo.
@@ -40,6 +42,8 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* darkening-overlay strength — adjust in dashboard › 5. HERO */
+  opacity: var(--hero-scrim-opacity);
   background:
     radial-gradient(ellipse 80% 54% at 50% 50%,
       rgba(11, 11, 11, 0.66) 0%,

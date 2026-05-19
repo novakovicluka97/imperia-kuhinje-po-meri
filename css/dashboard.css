@@ -69,7 +69,7 @@
    =========================================================================== */
 
 /* --- The @import MUST stay the very first real line of this file. --------- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
 
@@ -77,7 +77,7 @@
      fonts used only if the main one fails to load. Leave the fallbacks be. */
   --font-heading: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
                                           /* headings + the IMPERIA logo     */
-  --font-body:    'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Montserrat', 'Karla', 'Jost', 'Helvetica Neue', Arial, sans-serif;
                                           /* paragraphs, nav, buttons, forms */
 
   /* Font WEIGHT = how thick the strokes are. 300 = light/airy, 700 = bold. */
@@ -124,9 +124,11 @@
   /* =========================================================================
      3. LOGO
      -------------------------------------------------------------------------
-     The header logo is the centred "IMPERIA" mark with the small gold
-     "KUHINJE PO MERI" subtitle and two hairlines. It is drawn as crisp
-     vector art, so it stays sharp at any size.
+     The header logo has three parts, each controlled separately below:
+       • the "IMPERIA" name
+       • the gold "KUHINJE PO MERI" subtitle
+       • a thin RULE (line) sitting UNDER the subtitle
+     It is drawn as crisp vector art, so it stays sharp at any size.
 
        --logo-size        = how big the WHOLE logo is on screen.
        --logo-name-size   = the "IMPERIA" letters, RELATIVE to the rest.
@@ -136,28 +138,45 @@
      internal proportions. To just make the subtitle bigger, raise
      --logo-sub-size on its own.
 
-     NOTE: --logo-name-size / --logo-sub-size are measured in the logo's own
-     internal drawing grid (the whole logo is 96 units tall). Treat them as
-     relative numbers, not real pixels.
+     NOTE: the inner sizes / positions below (--logo-name-size, --logo-sub-size,
+     and the rule) are measured in the logo's own internal drawing
+     grid — 540 units wide x 96 units tall, with the centre at 270. Treat them
+     as relative numbers, not real pixels.
      ========================================================================= */
 
   /* -- Overall logo size (scales the name, subtitle and lines together) ---- */
-  --logo-size:          clamp(34px, 6.4vw, 46px);  /* logo height at the top of the landing page */
-  --logo-size-scrolled: clamp(32px, 5.6vw, 40px);  /* logo height once the page is scrolled / on inner pages */
+  --logo-size:          clamp(64px, 9vw, 66px);  /* logo height at the top of the landing page */
+  --logo-size-scrolled: clamp(54px, 8vw, 56px);  /* logo height once the page is scrolled / on inner pages */
 
   /* -- The "IMPERIA" name -------------------------------------------------- */
   --logo-name-size:     84px;      /* the big letters. Recommended range: 56-84 */
   --logo-name-tracking: 0.34em;    /* gap between the big letters               */
 
-  /* -- The "KUHINJE PO MERI" subtitle  ⭐ (this is the one you asked about) - */
-  --logo-sub-size:      25px;     /* subtitle size. Recommended range: 7-15.
-                                      Raise this to make the subtitle bigger.  */
+  /* -- The "KUHINJE PO MERI" subtitle  ⭐ ----------------------------------- */
+  --logo-sub-size:      30px;      /* subtitle size. Bigger = more prominent.
+                                      The rule below sits clear of it.          */
   --logo-sub-tracking:  0.42em;    /* gap between the subtitle letters. If you
                                       enlarge the subtitle and it gets too wide,
                                       lower this a little (e.g. 0.30em).        */
-  --logo-sub-shift:     0px;       /* nudge the subtitle down (+) or up (-) a
+  --logo-sub-shift:     7px;       /* nudge the subtitle down (+) or up (-) a
                                       touch, e.g. 1.5px, if resizing it throws
                                       the spacing off. 0 = leave as designed.   */
+
+  /* -- The RULE (line) under the subtitle ---------------------------------
+     A thin bar sitting BELOW "KUHINJE PO MERI". Because it is under the text
+     (not across it), it can never look like a strike-through — at any size. */
+  --logo-rule-display:   inline;   /* show the line. Change to  none  to hide it. */
+  --logo-rule-width:     510px;    /* how LONG the line is (the subtitle is ~435).*/
+  --logo-rule-thickness: 1.6px;    /* how THICK the line is.                      */
+  --logo-rule-y:         61px;     /* vertical position — bigger number = lower.  */
+  --logo-rule-color:     var(--color-accent);  /* line colour (gold by default).  */
+  --logo-rule-shift:     0px;      /* OPTICAL fine-tune — nudge the line LEFT (-)
+                                      or RIGHT (+). At 0 the line is already
+                                      mathematically dead-centre; use this only
+                                      to correct how centred it LOOKS. The
+                                      subtitle reads a touch left-heavy (one word
+                                      left, two words right), so -3px to -5px
+                                      makes the line look centred under it.     */
 
   /* -- The plain-text "Imperia" logo in the page FOOTER -------------------- */
   --footer-logo-size:   1.6rem;    /* footer wordmark size                     */
@@ -189,6 +208,16 @@
   --hero-height:      100svh;      /* banner height. 100svh = one full screen.
                                       Try 90svh or 80svh for a shorter hero.   */
   --hero-scroll-size: 0.62rem;     /* the small "Istražite" scroll cue text    */
+
+  /* -- Hero photo brightness & darkening -----------------------------------
+     The hero photo sits under a dark "scrim" — a shading layer added on
+     PURPOSE, so the white logo, header and scroll cue stay readable over the
+     photograph. The two knobs below tune how light or dark the hero looks.   */
+  --hero-brightness:    1;         /* the PHOTO itself: 1 = original ·
+                                      1.15 = brighter · 0.85 = darker.         */
+  --hero-scrim-opacity: 0.4;         /* the dark overlay: 1 = full shading (as
+                                      designed) · 0.5 = half · 0 = none — but
+                                      at 0 the logo can get hard to read.      */
 
 
   /* =========================================================================
@@ -265,9 +294,9 @@
   --fs-display: clamp(2rem, 4.6vw, 3.6rem);     /* section headings (h2)      */
   --fs-h3:      clamp(1.35rem, 2.4vw, 1.95rem); /* sub-headings (h3)          */
   --fs-lead:    clamp(1.05rem, 1.5vw, 1.3rem);  /* intro / lead paragraphs    */
-  --fs-body:    1.0625rem;                       /* normal paragraph text      */
-  --fs-small:   0.84rem;                         /* small text, captions       */
-  --fs-label:   0.74rem;                         /* uppercase mini-labels      */
+  --fs-body:    1.2rem;                       /* normal paragraph text      */
+  --fs-small:   1.2rem;                         /* small text, captions       */
+  --fs-label:   1.2rem;                         /* uppercase mini-labels      */
 
 
   /* =========================================================================

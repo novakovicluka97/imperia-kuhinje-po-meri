@@ -43,6 +43,18 @@
 .footer-col__list span { color: var(--color-text-muted); font-size: var(--fs-small); }
 .footer-col__list a:hover { color: var(--color-accent-strong); }
 
+/* Instagram link — the word with its icon sitting beside it. */
+.footer-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.footer-ig svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
 /* bottom strip */
 .site-footer__bottom {
   display: flex;
